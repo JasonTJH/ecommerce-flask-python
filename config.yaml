@@ -3,5 +3,5 @@ mysql_user: 'root'
 # Enter your password in field below
 mysql_password: '12345'
 mysql_db: 'ecommerce'
-'secret_key': 'this_is_a_random_string'
-'mysql_url': 'your_db_url'
+secret_key: 'this_is_a_random_string'
+mysql_url: 'your_db_url'
