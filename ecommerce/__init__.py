@@ -20,7 +20,7 @@ ALLOWED_EXTENSIONS = set(['jpeg', 'jpg', 'png', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 ######### Required in Case of firing complex queries without ORM #########
-db2 = yaml.load(open('config.yaml'))
+db2 = yaml.safe_load(open('config.yaml'))
 app.config['SECRET_KEY'] = db2['secret_key']
 app.config['SQLALCHEMY_DATABASE_URI'] = db2['mysql_url']
 app.config['MYSQL_HOST'] = db2['mysql_host']
