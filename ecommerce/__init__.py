@@ -12,6 +12,9 @@ import yaml
 ######## Enable this for debugging #########
 
 app = Flask(__name__)
+db2 = yaml.safe_load(open('config.yaml'))
+app.config['SQLALCHEMY_DATABASE_URI'] = db2['mysql_url']
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 app.secret_key = 'random string'
@@ -20,9 +23,8 @@ ALLOWED_EXTENSIONS = set(['jpeg', 'jpg', 'png', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 ######### Required in Case of firing complex queries without ORM #########
-db2 = yaml.safe_load(open('config.yaml'))
+
 app.config['SECRET_KEY'] = db2['secret_key']
-app.config['SQLALCHEMY_DATABASE_URI'] = db2['mysql_url']
 app.config['MYSQL_HOST'] = db2['mysql_host']
 app.config['MYSQL_USER'] = db2['mysql_user']
 app.config['MYSQL_PASSWORD'] = db2['mysql_password']
